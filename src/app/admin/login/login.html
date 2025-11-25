@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="card">
+    <h2>Área do Admin</h2>
+
+    <form (ngSubmit)="login()">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email" required />
+
+      <label>Senha</label>
+      <input type="password" [(ngModel)]="senha" name="senha" required />
+
+      <button type="submit">Entrar</button>
+
+      <p class="erro" *ngIf="erro">{{ erro }}</p>
+    </form>
+  </div>
+</div>

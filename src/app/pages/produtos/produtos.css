@@ -1,0 +1,198 @@
+/* ===== HEADER ===== */
+.header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff4d88;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 500;
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav a:hover {
+  color: #ff4d88;
+}
+
+.nav a.active {
+  color: #ff4d88;
+  font-weight: 600;
+}
+
+.btn-admin {
+  padding: 8px 16px;
+  background: #ff4d88;
+  color: white !important;
+  border-radius: 8px;
+}
+
+.btn-admin:hover {
+  background: #e63a75;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.cardapio-container {
+  padding: 70px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cardapio-container h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #ff4d88;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+
+.cardapio-container p {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== GRID ===== */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 35px;
+  padding: 10px;
+}
+
+/* ===== CARDS ===== */
+.produto-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.produto-card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.produto-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== BOTÃO ===== */
+.produto-card button {
+  padding: 12px 22px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: "Poppins", sans-serif;
+}
+
+.produto-card button:hover {
+  background: #e63a75;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 60px;
+  padding: 25px;
+  text-align: center;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  color: #555;
+  border-top: 2px solid #f2f2f2;
+}
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+.footer p a {
+  color: #ff4d88;
+  text-decoration: none;
+}
+.footer p a:hover {
+  text-decoration: underline;
+}   
+/* ===== TIPOGRAFIA ===== */
+h1, h2, h3 {
+  color: #4f042d;
+}   
+p, span {
+  color: #444444;
+}
+button {
+  background-color: #B23A72;
+  color: #fff;
+}
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+}
+body, p, a, span {
+  font-family: "Poppins", sans-serif;
+}   
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0px 3px 6px rgba(0,0,0,0.25);
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  color: #666666;
+}
+.btn-primary {
+  background-color: #B23A72;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+  background-color: #9e2f5e;
+}
+.btn-admin {
+  padding: 8px 16px;
+  background: #ff4d88;
+  color: white !important;
+  border-radius: 8px;
+}
+.btn-admin:hover {
+  background: #e63a75;
+}

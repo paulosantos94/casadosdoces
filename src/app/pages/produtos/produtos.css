@@ -1,41 +1,41 @@
-/* ===== HEADER ===== */
+/* ===== RESET E TIPOGRAFIA ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, p, a, span {
+  font-family: "Poppins", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  color: #4f042d;
+}
+
+/* ===== HEADER (mesmo da Home) ===== */
 .header {
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px;
+  background: #f7e2e8;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 22px;
   font-weight: 700;
-  color: #ff4d88;
-  font-family: "Poppins", sans-serif;
+  color: #e82462;
 }
 
 .nav a {
   margin-left: 20px;
   text-decoration: none;
-  font-size: 1.1rem;
-  color: #444;
+  color: #402749;
   font-weight: 500;
-  transition: 0.3s;
-  font-family: "Poppins", sans-serif;
-}
-
-.nav a:hover {
-  color: #ff4d88;
-}
-
-.nav a.active {
-  color: #ff4d88;
-  font-weight: 600;
 }
 
 .btn-admin {
@@ -43,33 +43,31 @@
   background: #ff4d88;
   color: white !important;
   border-radius: 8px;
+  font-weight: bold;
 }
 
 .btn-admin:hover {
-  background: #e63a75;
+  background: #e04378;
 }
 
 /* ===== CONTAINER PRINCIPAL ===== */
 .cardapio-container {
-  padding: 70px 20px;
+  padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
 
 .cardapio-container h1 {
-  font-size: 3rem;
-  margin-bottom: 12px;
-  color: #ff4d88;
-  font-weight: 700;
-  font-family: "Poppins", sans-serif;
+  font-size: 2.8rem;
+  color: #b14666;
+  margin-bottom: 10px;
 }
 
 .cardapio-container p {
-  font-size: 1.3rem;
-  color: #555;
-  margin-bottom: 50px;
-  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
 }
 
 /* ===== GRID ===== */
@@ -82,117 +80,58 @@
 
 /* ===== CARDS ===== */
 .produto-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background: #fef6f7;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .produto-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .produto-card img {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 12px;
   margin-bottom: 15px;
 }
 
 .produto-card h3 {
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 1.4rem;
+  color: #b14666;
   margin-bottom: 12px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
 }
 
 /* ===== BOTÃO ===== */
 .produto-card button {
-  padding: 12px 22px;
-  border: none;
-  background: #ff4d88;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #b23a72, #e26fa1);
   color: white;
-  font-size: 1rem;
-  border-radius: 10px;
+  border: none;
+  border-radius: 30px;
   cursor: pointer;
-  transition: 0.2s;
-  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 .produto-card button:hover {
-  background: #e63a75;
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #9e2f5e, #d45b89);
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  margin-top: 60px;
   padding: 25px;
+  background: #fdeff3;
   text-align: center;
-  background: #fff;
-  font-family: "Poppins", sans-serif;
-  color: #555;
-  border-top: 2px solid #f2f2f2;
+  color: #a47481;
+  margin-top: 50px;
 }
+
 .footer p {
   margin: 0;
   font-size: 1rem;
-}
-.footer p a {
-  color: #ff4d88;
-  text-decoration: none;
-}
-.footer p a:hover {
-  text-decoration: underline;
-}   
-/* ===== TIPOGRAFIA ===== */
-h1, h2, h3 {
-  color: #4f042d;
-}   
-p, span {
-  color: #444444;
-}
-button {
-  background-color: #B23A72;
-  color: #fff;
-}
-h1, h2, h3 {
-  font-family: "Playfair Display", serif;
-}
-body, p, a, span {
-  font-family: "Poppins", sans-serif;
-}   
-.hero-title {
-  font-size: 3.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0px 3px 6px rgba(0,0,0,0.25);
-}
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-top: 15px;
-  color: #666666;
-}
-.btn-primary {
-  background-color: #B23A72;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-.btn-primary:hover {
-  background-color: #9e2f5e;
-}
-.btn-admin {
-  padding: 8px 16px;
-  background: #ff4d88;
-  color: white !important;
-  border-radius: 8px;
-}
-.btn-admin:hover {
-  background: #e63a75;
 }

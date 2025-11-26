@@ -1,0 +1,26 @@
+<div class="admin-top">
+  <h2>Produtos</h2>
+  <div class="admin-actions">
+    <input type="text" placeholder="Buscar por nome ou categoria" [(ngModel)]="filtro">
+    <button (click)="aplicarFiltro()">Buscar</button>
+    <button (click)="novo()" class="btn-primary">Novo Produto</button>
+  </div>
+</div>
+
+<div class="prod-list">
+  <div *ngFor="let p of produtos" class="prod-item">
+    <div class="thumb">
+      <img *ngIf="p.imagemBase64" [src]="p.imagemBase64" alt="{{p.nome}}">
+      <div *ngIf="!p.imagemBase64" class="no-thumb">Sem foto</div>
+    </div>
+    <div class="info">
+      <h3>{{p.nome}}</h3>
+      <p class="cat">{{p.categoria}} • R$ {{p.preco | number:'1.2-2'}}</p>
+      <p>Quantidade: {{p.quantidade}}</p>
+    </div>
+    <div class="actions">
+      <button (click)="editar(p.id)">Editar</button>
+      <button (click)="excluir(p.id)" class="danger">Excluir</button>
+    </div>
+  </div>
+</div>

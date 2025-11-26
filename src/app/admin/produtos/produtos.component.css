@@ -1,0 +1,24 @@
+.admin-top {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+.admin-actions { display:flex; gap:8px; align-items:center; }
+.admin-actions input { padding:8px 10px; border-radius:6px; border:1px solid #ddd; }
+
+.prod-list { display:flex; flex-direction:column; gap:12px; }
+.prod-item {
+  display:flex; align-items:center; gap:16px;
+  padding:14px; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04);
+}
+.thumb { width:110px; height:80px; display:flex; justify-content:center; align-items:center; overflow:hidden; border-radius:8px; background:#faf0f2; }
+.thumb img { width:100%; height:100%; object-fit:cover; }
+.no-thumb { padding:6px; color:#888; font-size:0.9rem; }
+.info h3 { margin:0 0 6px 0; }
+.info .cat { color:#666; font-size:0.95rem; margin-bottom:6px; }
+.actions { margin-left:auto; display:flex; gap:8px; }
+button { padding:8px 12px; border-radius:8px; border:none; cursor:pointer; }
+button.danger { background:#ff6b7a; color:#fff; }
+.btn-primary { background: linear-gradient(135deg,#b23a72,#e26fa1); color:white; border:none; padding:10px 14px; border-radius:12px; }

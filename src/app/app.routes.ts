@@ -12,17 +12,19 @@ import { Cupcakes } from './pages/cupcakes/cupcakes';
 import { Cookies } from './pages/cookies/cookies';
 
 // PRODUTOS (CARDÁPIO)
-import { Produtos } from './pages/produtos/produtos';  // <-- AQUI ESTAVA ERRADO
+import { Produtos } from './pages/produtos/produtos';
 
 // ADMIN
 import { LoginComponent } from './admin/login/login';
-import { Dashboard } from './admin/dashboard/dashboard';
-import { ProdutosService } from './admin/produtos/produtos'; // ADMIN DE PRODUTOS
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+
+// PRODUTOS ADMIN
+import { ProdutosComponent } from './admin/produtos/produtos.component';
+import { ProdutoFormComponent } from './admin/produto-form/produto-form.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-
-  { path: 'produtos', component: Produtos }, // <-- AGORA FUNCIONA!
+  { path: 'produtos', component: Produtos },
 
   // Categorias
   { path: 'bolos', component: Bolos },
@@ -33,11 +35,15 @@ export const routes: Routes = [
 
   // Admin
   { path: 'admin', component: LoginComponent },
-  { path: 'admin/dashboard', component: Dashboard },
-  { path: 'admin/produtos', component: ProdutosService },
+  { path: 'admin/dashboard', component: DashboardComponent },
 
+  // Administração de Produtos
+  { path: 'admin/produtos', component: ProdutosComponent },
+  { path: 'admin/produto-form', component: ProdutoFormComponent },
+  { path: 'admin/produto-form/:id', component: ProdutoFormComponent },
+
+  // Outros
   { path: 'carrinho', component: Carrinho },
 
-  // rota inválida
   { path: '**', redirectTo: '' }
 ];

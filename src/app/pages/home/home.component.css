@@ -19,18 +19,18 @@ header.header {
 .logo {
   font-size: 22px;
   font-weight: 700;
-  color: #c05a7a;
+  color: #e82462;
 }
 
 nav a {
   margin-left: 20px;
   text-decoration: none;
-  color: #a44d67;
+  color: #402749;
   font-weight: 500;
 }
 
 .admin-btn {
-  background: #c05a7a;
+  background: #000000;
   padding: 8px 12px;
   border-radius: 6px;
   color: white !important;
@@ -218,4 +218,31 @@ body, p, a, span {
 }
 .btn-admin:hover {
   background: #e04870;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  color: #666666;
+}
+.hero-primary {
+  background-color: #B23A72;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.hero-primary:hover {
+  background-color: #9e2f5e;
+}
+.btn-admin {
+  padding: 8px 16px;
+  background: #ff4d88;
+  color: white !important;
+  border-radius: 8px;
+}
+.btn-admin:hover {
+  background: #e04378;
 }

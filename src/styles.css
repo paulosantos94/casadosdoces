@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fontes Globais */
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}

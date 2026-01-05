@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 // IMPORTS NECESSÁRIOS
-import { NgFor, NgIf, DecimalPipe } from '@angular/common';
+import { NgFor, NgIf, DecimalPipe, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ProdutosService } from '../../services/produtos';
@@ -17,7 +17,9 @@ import { Produto } from '../../models/produto.model';
     NgFor,
     NgIf,
     FormsModule,
-    DecimalPipe
+    DecimalPipe,
+    TitleCasePipe,
+    RouterModule
   ]
 })
 export class ProdutosComponent implements OnInit {

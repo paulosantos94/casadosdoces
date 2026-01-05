@@ -1,13 +1,19 @@
 <div class="admin-top">
-  <h2>Produtos</h2>
+  <div>
+    <div class="back-links">
+      <a routerLink="/" class="back-link">🏠 Voltar ao Site</a>
+      <a routerLink="/admin/dashboard" class="back-link">📊 Voltar para o Menu do Admin</a>
+    </div>
+    <h2>Gerenciar Produtos</h2>
+  </div>
   <div class="admin-actions">
-    <input type="text" placeholder="Buscar por nome ou categoria" [(ngModel)]="filtro">
+    <input type="text" placeholder="Buscar por nome ou categoria..." [(ngModel)]="filtro" (keyup.enter)="aplicarFiltro()">
     <button (click)="aplicarFiltro()">Buscar</button>
-    <button (click)="novo()" class="btn-primary">Novo Produto</button>
+    <button (click)="novo()" class="btn-primary">+ Novo Produto</button>
   </div>
 </div>
 
-<div class="prod-list">
+<div class="prod-list" *ngIf="produtos.length > 0; else emptyState">
   <div *ngFor="let p of produtos" class="prod-item">
     <div class="thumb">
       <img *ngIf="p.imagemBase64" [src]="p.imagemBase64" alt="{{p.nome}}">
@@ -15,8 +21,9 @@
     </div>
     <div class="info">
       <h3>{{p.nome}}</h3>
-      <p class="cat">{{p.categoria}} • R$ {{p.preco | number:'1.2-2'}}</p>
-      <p>Quantidade: {{p.quantidade}}</p>
+      <p class="cat">{{p.categoria | titlecase}} • R$ {{p.preco | number:'1.2-2'}}</p>
+      <p>Estoque: {{p.quantidade}} unidades</p>
+      <p *ngIf="p.descricao" style="font-size: 0.9rem; color: #999; margin-top: 6px;">{{p.descricao}}</p>
     </div>
     <div class="actions">
       <button (click)="editar(p.id)">Editar</button>
@@ -24,3 +31,10 @@
     </div>
   </div>
 </div>
+
+<ng-template #emptyState>
+  <div class="empty-state">
+    <p>Nenhum produto encontrado.</p>
+    <button (click)="novo()" class="btn-primary" style="margin-top: 20px;">Criar Primeiro Produto</button>
+  </div>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Produto } from '../models/produto.model';
 
 @Injectable({
@@ -6,19 +7,35 @@ import { Produto } from '../models/produto.model';
 })
 export class ProdutosService {
   private storageKey = 'produtos_casinha';
+  private produtos: BehaviorSubject<Produto[]>;
+  public produtos$: Observable<Produto[]>;
 
   constructor() {
+    this.produtos = new BehaviorSubject<Produto[]>([]);
+    this.produtos$ = this.produtos.asObservable();
     this.seedIfEmpty();
+    this.loadFromStorage();
+  }
+
+  private loadFromStorage() {
+    const raw = localStorage.getItem(this.storageKey);
+    const items = raw ? JSON.parse(raw) as Produto[] : [];
+    this.produtos.next(items);
+  }
+
+  private saveToStorage(items: Produto[]) {
+    localStorage.setItem(this.storageKey, JSON.stringify(items));
+    this.produtos.next(items);
   }
 
   private seedIfEmpty() {
-    const all = this.getAll();
-    if (!all || all.length === 0) {
+    const raw = localStorage.getItem(this.storageKey);
+    if (!raw || JSON.parse(raw).length === 0) {
       const seed: Produto[] = [
         { id: 1, nome: 'Bombom Sortido', descricao: 'Bombons artesanais', preco: 4.5, quantidade: 30, categoria: 'bombons', imagemBase64: '', ativo: true },
         { id: 2, nome: 'Bolo de Chocolate', descricao: 'Bolo caseiro', preco: 45.0, quantidade: 10, categoria: 'bolos', imagemBase64: '', ativo: true }
       ];
-      localStorage.setItem(this.storageKey, JSON.stringify(seed));
+      this.saveToStorage(seed);
     }
   }
 
@@ -28,8 +45,7 @@ export class ProdutosService {
   }
 
   getAll(): Produto[] {
-    const raw = localStorage.getItem(this.storageKey);
-    return raw ? JSON.parse(raw) as Produto[] : [];
+    return this.produtos.getValue();
   }
 
   getById(id: number): Produto | undefined {
@@ -49,7 +65,7 @@ export class ProdutosService {
       ativo: produto.ativo ?? true
     };
     items.push(newItem);
-    localStorage.setItem(this.storageKey, JSON.stringify(items));
+    this.saveToStorage(items);
     return newItem;
   }
 
@@ -58,7 +74,7 @@ export class ProdutosService {
     const idx = items.findIndex(p => p.id === id);
     if (idx === -1) return undefined;
     items[idx] = { ...items[idx], ...changes };
-    localStorage.setItem(this.storageKey, JSON.stringify(items));
+    this.saveToStorage(items);
     return items[idx];
   }
 
@@ -66,7 +82,7 @@ export class ProdutosService {
     let items = this.getAll();
     const before = items.length;
     items = items.filter(p => p.id !== id);
-    localStorage.setItem(this.storageKey, JSON.stringify(items));
+    this.saveToStorage(items);
     return items.length < before;
   }
 

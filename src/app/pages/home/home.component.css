@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Header */
@@ -27,6 +27,44 @@ nav a {
   text-decoration: none;
   color: #402749;
   font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav a:hover {
+  color: #e82462;
+}
+
+.carrinho-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid #b23a72;
+  transition: all 0.3s;
+}
+
+.carrinho-link:hover {
+  background: #f7e2e8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(178, 58, 114, 0.2);
+}
+
+.carrinho-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #e82462;
+  color: white;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 4px;
 }
 
 .admin-btn {
@@ -180,11 +218,11 @@ button {
   color: #fff;
 }
 h1, h2, h3 {
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", serif;
 }
 
 body, p, a, span {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .hero-title {
   font-size: 3.2rem;
@@ -198,7 +236,7 @@ body, p, a, span {
   background: linear-gradient(135deg, #b23a72, #e26fa1);
   color: white;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-shadow: 0 4px 10px rgba(178, 58, 114, 0.3);
   transition: 0.3s;
 }

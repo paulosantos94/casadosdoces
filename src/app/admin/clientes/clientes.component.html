@@ -1,0 +1,61 @@
+<div class="admin-layout">
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <nav>
+      <a routerLink="/admin/dashboard" routerLinkActive="active">Visão Geral</a>
+      <a routerLink="/admin/produtos" routerLinkActive="active">Produtos</a>
+      <a routerLink="/admin/pedidos" routerLinkActive="active">Pedidos</a>
+      <a routerLink="/admin/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/" class="back-to-site">🏠 Voltar ao Site</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="admin-top">
+      <div>
+        <div class="back-links">
+          <a routerLink="/" class="back-link">🏠 Voltar ao Site</a>
+          <a routerLink="/admin/dashboard" class="back-link">📊 Voltar para o Menu do Admin</a>
+        </div>
+        <h2>Gerenciar Clientes</h2>
+      </div>
+      <div class="admin-actions">
+        <input type="text" placeholder="Buscar por nome..." [(ngModel)]="filtro" (keyup.enter)="aplicarFiltro()">
+        <button (click)="aplicarFiltro()">Buscar</button>
+      </div>
+    </div>
+
+    <div class="clientes-list" *ngIf="clientes.length > 0; else emptyState">
+      <div *ngFor="let cliente of clientes" class="cliente-card">
+        <div class="cliente-header">
+          <h3>{{ cliente.nome }}</h3>
+        </div>
+        <div class="cliente-stats">
+          <div class="stat-item">
+            <span class="stat-label">Total de Pedidos</span>
+            <span class="stat-value">{{ cliente.totalPedidos }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total Gasto</span>
+            <span class="stat-value">R$ {{ cliente.totalGasto | number:'1.2-2' }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Primeiro Pedido</span>
+            <span class="stat-value">{{ cliente.primeiroPedido | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Último Pedido</span>
+            <span class="stat-value">{{ cliente.ultimoPedido | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <p>Nenhum cliente encontrado.</p>
+      </div>
+    </ng-template>
+  </main>
+</div>
+

@@ -1,0 +1,79 @@
+<div class="admin-layout">
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <nav>
+      <a routerLink="/admin/dashboard" routerLinkActive="active">Visão Geral</a>
+      <a routerLink="/admin/produtos" routerLinkActive="active">Produtos</a>
+      <a routerLink="/admin/pedidos" routerLinkActive="active">Pedidos</a>
+      <a routerLink="/admin/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/" class="back-to-site">🏠 Voltar ao Site</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="admin-top">
+      <div>
+        <div class="back-links">
+          <a routerLink="/" class="back-link">🏠 Voltar ao Site</a>
+          <a routerLink="/admin/dashboard" class="back-link">📊 Voltar para o Menu do Admin</a>
+        </div>
+        <h2>Gerenciar Pedidos</h2>
+      </div>
+      <div class="admin-actions">
+        <input type="text" placeholder="Buscar por nome ou ID..." [(ngModel)]="filtro" (keyup.enter)="aplicarFiltros()">
+        <select [(ngModel)]="statusFiltro" (change)="aplicarFiltros()">
+          <option value="todos">Todos os Status</option>
+          <option value="pendente">Pendente</option>
+          <option value="confirmado">Confirmado</option>
+          <option value="entregue">Entregue</option>
+          <option value="cancelado">Cancelado</option>
+        </select>
+        <button (click)="aplicarFiltros()">Buscar</button>
+      </div>
+    </div>
+
+    <div class="pedidos-list" *ngIf="pedidos.length > 0; else emptyState">
+      <div *ngFor="let pedido of pedidos" class="pedido-card">
+        <div class="pedido-header">
+          <div class="pedido-info-top">
+            <span class="pedido-id">Pedido #{{ pedido.id }}</span>
+            <span class="pedido-data">{{ pedido.data | date:'dd/MM/yyyy HH:mm' }}</span>
+            <span class="status-badge" [ngClass]="getStatusClass(pedido.status)">
+              {{ pedido.status | titlecase }}
+            </span>
+          </div>
+          <h3 class="cliente-nome">{{ pedido.nomeCliente }}</h3>
+        </div>
+
+        <div class="pedido-itens">
+          <div *ngFor="let item of pedido.itens" class="item-row">
+            <span>{{ item.produto.nome }} ({{ item.quantidade }}x)</span>
+            <span>R$ {{ (item.produto.preco * item.quantidade) | number:'1.2-2' }}</span>
+          </div>
+        </div>
+
+        <div class="pedido-footer">
+          <div class="pedido-total">
+            <strong>Total: R$ {{ pedido.total | number:'1.2-2' }}</strong>
+          </div>
+          <div class="pedido-actions">
+            <select (change)="alterarStatus(pedido.id, $any($event.target).value)" [value]="pedido.status">
+              <option value="pendente">Pendente</option>
+              <option value="confirmado">Confirmar</option>
+              <option value="entregue">Marcar como Entregue</option>
+              <option value="cancelado">Cancelar</option>
+            </select>
+            <button (click)="excluir(pedido.id)" class="btn-danger">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <p>Nenhum pedido encontrado.</p>
+      </div>
+    </ng-template>
+  </main>
+</div>
+

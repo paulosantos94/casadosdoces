@@ -2,11 +2,14 @@
   <div class="logo">Casinha dos Doces</div>
 
   <nav class="nav">
- <a routerLink="/">Home</a>
-<a routerLink="/produtos">Cardápio</a>
-<a href="#">Contato</a>
-<a routerLink="/admin" class="btn-admin">Área do Admin</a>
-
+    <a routerLink="/">Home</a>
+    <a routerLink="/produtos">Cardápio</a>
+    <a href="#">Contato</a>
+    <a routerLink="/carrinho" class="carrinho-link">
+      🛒 Carrinho
+      <span class="carrinho-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
+    </a>
+    <a routerLink="/admin" class="btn-admin">Área do Admin</a>
   </nav>
 </header>
 

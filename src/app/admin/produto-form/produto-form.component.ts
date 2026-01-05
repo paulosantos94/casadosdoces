@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ProdutosService } from '../../services/produtos';
   standalone: true,
   templateUrl: './produto-form.component.html',
   styleUrls: ['./produto-form.component.css'],
-  imports: [NgIf, FormsModule]
+  imports: [NgIf, FormsModule, RouterModule]
 })
 export class ProdutoFormComponent implements OnInit {
 
@@ -23,6 +23,7 @@ export class ProdutoFormComponent implements OnInit {
     preco: 0,
     categoria: '',
     quantidade: 0,
+    imagemBase64: '',
     ativo: true
   };
 
@@ -52,5 +53,20 @@ export class ProdutoFormComponent implements OnInit {
     }
 
     this.router.navigate(['/admin/produtos']);
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.produto.imagemBase64 = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    }
   }
 }

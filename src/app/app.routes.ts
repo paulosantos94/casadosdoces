@@ -22,6 +22,10 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ProdutosComponent } from './admin/produtos/produtos.component';
 import { ProdutoFormComponent } from './admin/produto-form/produto-form.component';
 
+// PEDIDOS E CLIENTES ADMIN
+import { PedidosComponent } from './admin/pedidos/pedidos.component';
+import { ClientesComponent } from './admin/clientes/clientes.component';
+
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'produtos', component: Produtos },
@@ -41,6 +45,10 @@ export const routes: Routes = [
   { path: 'admin/produtos', component: ProdutosComponent },
   { path: 'admin/produto-form', component: ProdutoFormComponent },
   { path: 'admin/produto-form/:id', component: ProdutoFormComponent },
+
+  // Administração de Pedidos e Clientes
+  { path: 'admin/pedidos', component: PedidosComponent },
+  { path: 'admin/clientes', component: ClientesComponent },
 
   // Outros
   { path: 'carrinho', component: Carrinho },

@@ -9,6 +9,7 @@
       <a routerLink="/admin/produtos" routerLinkActive="active">Produtos</a>
       <a routerLink="/admin/pedidos" routerLinkActive="active">Pedidos</a>
       <a routerLink="/admin/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/" class="back-to-site">🏠 Voltar ao Site</a>
     </nav>
   </aside>
 
@@ -18,9 +19,18 @@
     <p>Bem-vindo ao painel administrativo da Casinha dos Doces 🍰</p>
     
     <div class="cards">
-      <div class="card">Produtos Cadastrados: {{ produtosCadastrados }}</div>
-      <div class="card">Pedidos Hoje: {{ pedidosHoje }}</div>
-      <div class="card">Clientes Ativos: {{ clientesAtivos }}</div>
+      <div class="card">
+        Produtos Cadastrados
+        <strong>{{ produtosCadastrados }}</strong>
+      </div>
+      <div class="card">
+        Pedidos Hoje
+        <strong>{{ pedidosHoje }}</strong>
+      </div>
+      <div class="card">
+        Clientas Ativos
+        <strong>{{ clientesAtivos }}</strong>
+      </div>
     </div>
 
   </main>

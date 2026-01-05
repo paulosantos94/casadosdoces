@@ -1,0 +1,14 @@
+<div class="toast-container">
+  <div 
+    *ngFor="let toast of toasts" 
+    class="toast"
+    [ngClass]="'toast-' + toast.type"
+    (click)="remove(toast.id)">
+    <span class="toast-icon">
+      {{ toast.type === 'success' ? '✓' : toast.type === 'error' ? '✕' : 'ℹ' }}
+    </span>
+    <span class="toast-message">{{ toast.message }}</span>
+    <button class="toast-close" (click)="remove(toast.id); $event.stopPropagation()">×</button>
+  </div>
+</div>
+

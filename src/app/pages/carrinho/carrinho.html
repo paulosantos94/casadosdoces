@@ -1,1 +1,111 @@
-<p>carrinho works!</p>
+<header class="header">
+  <div class="logo">Casinha dos Doces</div>
+  <nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/produtos">Cardápio</a>
+    <a href="#">Contato</a>
+    <a routerLink="/admin" class="btn-admin">Área do Admin</a>
+  </nav>
+</header>
+
+<div class="carrinho-container">
+  <h1>🛒 Meu Carrinho</h1>
+
+  <div *ngIf="itens.length > 0; else carrinhoVazio" class="carrinho-content">
+    
+    <!-- Lista de Itens -->
+    <div class="itens-list">
+      <div class="carrinho-header">
+        <h2>Itens no Carrinho</h2>
+        <button class="btn-limpar" (click)="limparCarrinho()">Limpar Carrinho</button>
+      </div>
+
+      <div class="item-card" *ngFor="let item of itens">
+        <div class="item-image">
+          <img [src]="item.produto.imagemBase64 || 'assets/imagens/sample-cake.jpg'" [alt]="item.produto.nome">
+        </div>
+        
+        <div class="item-info">
+          <h3>{{ item.produto.nome }}</h3>
+          <p class="item-categoria">{{ item.produto.categoria | titlecase }}</p>
+          <p class="item-descricao" *ngIf="item.produto.descricao">{{ item.produto.descricao }}</p>
+          <p class="item-preco-unitario">R$ {{ item.produto.preco | number:'1.2-2' }} cada</p>
+        </div>
+
+        <div class="item-quantidade">
+          <label>Quantidade:</label>
+          <div class="quantidade-controls">
+            <button class="btn-quantidade" (click)="alterarQuantidade(item, item.quantidade - 1)">-</button>
+            <input 
+              type="number" 
+              [value]="item.quantidade" 
+              [min]="1"
+              [max]="getQuantidadeMaxima(item.produto.id)"
+              (change)="alterarQuantidade(item, +$any($event.target).value)"
+              class="quantidade-input">
+            <button 
+              class="btn-quantidade" 
+              (click)="alterarQuantidade(item, item.quantidade + 1)"
+              [disabled]="item.quantidade >= getQuantidadeMaxima(item.produto.id)">
+              +
+            </button>
+          </div>
+          <small class="estoque-info">Estoque: {{ getQuantidadeMaxima(item.produto.id) }} unidades</small>
+        </div>
+
+        <div class="item-subtotal">
+          <p class="subtotal-label">Subtotal</p>
+          <p class="subtotal-value">R$ {{ (item.produto.preco * item.quantidade) | number:'1.2-2' }}</p>
+        </div>
+
+        <button class="btn-remover" (click)="removerProduto(item.produto.id)">🗑️</button>
+      </div>
+    </div>
+
+    <!-- Resumo do Pedido -->
+    <div class="resumo-pedido">
+      <h2>Resumo do Pedido</h2>
+      
+      <div class="campo-nome">
+        <label for="nomeCliente">Seu Nome *</label>
+        <input 
+          type="text" 
+          id="nomeCliente"
+          [(ngModel)]="nomeCliente" 
+          placeholder="Digite seu nome completo"
+          required
+          class="input-nome">
+        <small>Obrigatório para finalizar o pedido</small>
+      </div>
+
+      <div class="resumo-item" *ngFor="let item of itens">
+        <span>{{ item.produto.nome }} ({{ item.quantidade }}x)</span>
+        <span>R$ {{ (item.produto.preco * item.quantidade) | number:'1.2-2' }}</span>
+      </div>
+
+      <div class="resumo-total">
+        <span class="total-label">Total:</span>
+        <span class="total-value">R$ {{ total | number:'1.2-2' }}</span>
+      </div>
+
+      <button class="btn-finalizar" (click)="finalizarPedido()">
+        📱 Finalizar Pedido no WhatsApp
+      </button>
+
+      <a routerLink="/produtos" class="btn-continuar">Continuar Comprando</a>
+    </div>
+  </div>
+
+  <ng-template #carrinhoVazio>
+    <div class="carrinho-vazio">
+      <div class="empty-icon">🛒</div>
+      <h2>Seu carrinho está vazio</h2>
+      <p>Que tal adicionar alguns doces deliciosos?</p>
+      <a routerLink="/produtos" class="btn-primary">Ver Produtos</a>
+    </div>
+  </ng-template>
+</div>
+
+<footer class="footer">
+  <p>© 2025 Casinha dos Doces — Feito com amor 💗</p>
+</footer>

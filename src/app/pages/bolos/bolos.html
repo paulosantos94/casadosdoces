@@ -1,2 +1,44 @@
-<h1>Bolos</h1>
-<p>Veja nossos deliciosos bolos artesanais.</p>
+<header class="header">
+  <div class="logo">Casinha dos Doces</div>
+  <nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/produtos">Cardápio</a>
+    <a href="#">Contato</a>
+    <a routerLink="/carrinho" class="carrinho-link">
+      🛒 Carrinho
+      <span class="carrinho-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
+    </a>
+    <a routerLink="/admin" class="btn-admin">Área do Admin</a>
+  </nav>
+</header>
+
+<div class="page-container">
+  <h1>Bolos</h1>
+  <p>Veja nossos deliciosos bolos artesanais feitos com muito carinho.</p>
+
+  <div class="product-grid" *ngIf="produtos.length > 0; else noProducts">
+    <div class="product-card" *ngFor="let produto of produtos">
+      <img [src]="produto.imagemBase64 || 'assets/imagens/sample-cake.jpg'" alt="{{ produto.nome }}">
+      <div class="product-card-content">
+        <h3>{{ produto.nome }}</h3>
+        <p class="description">{{ produto.descricao || 'Delicioso bolo artesanal' }}</p>
+        <p class="price">{{ produto.preco | currency:'BRL' }}</p>
+        <button 
+          (click)="adicionarAoCarrinho(produto)" 
+          [class.added]="produtoAdicionado === produto.id">
+          {{ produtoAdicionado === produto.id ? '✓ Adicionado!' : 'Adicionar ao Carrinho' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noProducts>
+    <div class="no-products">
+      <p>Nenhum bolo encontrado no momento. Em breve teremos novidades!</p>
+    </div>
+  </ng-template>
+</div>
+
+<footer class="footer">
+  <p>© 2025 Casinha dos Doces — Feito com amor 💗</p>
+</footer>

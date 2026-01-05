@@ -1,19 +1,54 @@
 <div class="form-container">
+  <div class="back-links">
+    <a routerLink="/" class="back-link">🏠 Voltar ao Site</a>
+    <a routerLink="/admin/dashboard" class="back-link">📊 Voltar para o Menu do Admin</a>
+    <a routerLink="/admin/produtos" class="back-link">← Voltar para Produtos</a>
+  </div>
   <h2>{{ editando ? 'Editar Produto' : 'Novo Produto' }}</h2>
 
   <form (ngSubmit)="salvar()">
     
-    <label>Nome</label>
-    <input type="text" [(ngModel)]="produto.nome" name="nome" required>
+    <div>
+      <label>Nome do Produto</label>
+      <input type="text" [(ngModel)]="produto.nome" name="nome" required placeholder="Ex: Bolo de Chocolate">
+    </div>
 
-    <label>Descrição</label>
-    <textarea [(ngModel)]="produto.descricao" name="descricao"></textarea>
+    <div>
+      <label>Descrição</label>
+      <textarea [(ngModel)]="produto.descricao" name="descricao" placeholder="Descreva o produto..."></textarea>
+    </div>
 
-    <label>Preço</label>
-    <input type="number" [(ngModel)]="produto.preco" name="preco" required>
+    <div>
+      <label>Imagem do Produto</label>
+      <input type="file" accept="image/*" (change)="onFileSelected($event)">
+      <div *ngIf="produto.imagemBase64" class="image-preview">
+        <img [src]="produto.imagemBase64" alt="Preview do produto">
+      </div>
+    </div>
 
-    <label>Categoria</label>
-    <input type="text" [(ngModel)]="produto.categoria" name="categoria" required>
+    <div class="field-group">
+      <div>
+        <label>Preço (R$)</label>
+        <input type="number" [(ngModel)]="produto.preco" name="preco" required step="0.01" min="0" placeholder="0.00">
+      </div>
+
+      <div>
+        <label>Quantidade em Estoque</label>
+        <input type="number" [(ngModel)]="produto.quantidade" name="quantidade" required min="0" placeholder="0">
+      </div>
+    </div>
+
+    <div>
+      <label>Categoria</label>
+      <select [(ngModel)]="produto.categoria" name="categoria" required>
+        <option value="">Selecione uma categoria</option>
+        <option value="bolos">Bolos</option>
+        <option value="bombons">Bombons</option>
+        <option value="cupcakes">Cupcakes</option>
+        <option value="cookies">Cookies</option>
+        <option value="pudins">Pudins</option>
+      </select>
+    </div>
 
     <button type="submit">
       {{ editando ? 'Salvar Alterações' : 'Adicionar Produto' }}
